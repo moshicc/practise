@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @date 2021/5/12 15:52
  * @Version 1.0
  */
-public class Thread_demo1 {
+class Thread_demo1 {
 
     static class Thread1 extends Thread {
         @Override

@@ -8,7 +8,7 @@ package com.zcc.thread_practise;
  * @Version 1.0
  */
 
-public class Thread_demo2 implements Runnable {
+class Thread_demo2 implements Runnable {
     @Override
     public void run() {
         //编写自己的线程需要执行的代码
