@@ -33,10 +33,18 @@ public class Iterator_demo1 {
 //            System.out.println(list[i]);
 //        }
         List<Integer> arr = Arrays.asList(1,2,3);
-        for (int i : arr) {
-            System.out.println(i);
-
-        }
+        List arr1 = new ArrayList();
+        System.out.println("arr:"+arr);
+        //因为Arrays.asList创建的是一个Arrays类里ArrayList对象（这个内部类里面内有add方法，就使用它父类的add方法），它继承的抽象类AbstractList里面并没有实现remove、add方法，
+        //而正常的ArrayList类里面是实现了add方法的
+        // 底层调用的抽象方法并没有实现remove方法，而是直接抛出异常
+ //        arr.remove(1);
+//        System.out.println(arr);
+        //解决办法，把它传入另外一个ArrayList对象，但是对另外一个list集合对象的操作，不会影响原List集合对象内的数据。
+        List<Integer> arr2 = new ArrayList<Integer>(arr);
+        arr2.remove(1);
+        System.out.println("arr:"+arr);
+        System.out.println("arr2:"+arr2);
 
 
     }
