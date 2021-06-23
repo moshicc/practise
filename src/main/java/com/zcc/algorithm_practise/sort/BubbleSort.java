@@ -34,8 +34,9 @@ public class BubbleSort {
         int length = arr.length;
         for (int i = 0; i < length - 1; i++) {
             for (int j = 0; j < length - i - 1; j++) {
+                //指在什么情况下进行交换，是前大后小（前后交换），还是前小后大（前后交换）
                 if (arr[j] > arr[j+1]) {
-                    //下一步覆盖哪个，就将哪个暂存了
+                    //核心都是 前一个 与后一个交换（把后一个先暂存，把前一个赋值个后一个，再把暂存的后一个赋值个前一个）
                     int temp = arr[j + 1];
                     arr[j+1] = arr[j];
                     arr[j] = temp;
