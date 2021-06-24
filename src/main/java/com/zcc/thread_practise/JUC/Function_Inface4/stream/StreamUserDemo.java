@@ -33,6 +33,11 @@ public class StreamUserDemo {
         //lambda表达式、链式编程、函数式接口、Stream流式计算
         //filter 一个参数，返回值为布尔值, {return u.getId() % 2 == 0;} 若是只有一句，可以省略大括号和return
         list.stream()
-                .filter(u ->  u.getId() % 2 == 0).forEach(System.out::println);
+                .filter(u ->  u.getId() % 2 == 0)
+                .filter(u -> u.getAge() > 23)
+                .map(u -> {return u.getName().toUpperCase();})
+                .sorted((uu1,uu2) ->{return uu2.compareTo(uu1);})
+                .limit(1)
+                .forEach(System.out::println);
     }
 }
