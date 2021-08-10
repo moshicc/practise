@@ -38,7 +38,7 @@ public class Lock8Test1 {
 }
 
 class Phone{
-    // synchronized 锁的对象是方法的调用者！、
+    // synchronized 锁的对象是方法的调用者！（调用者是phone这个对象，所以同一时刻只能有一个线程持有phone对象）当然如果是两个不同的对象p1，p2,就不会竞争了
     // 两个方法用的是同一个锁，谁先拿到谁执行！
     public synchronized void sendSms() {
         try {

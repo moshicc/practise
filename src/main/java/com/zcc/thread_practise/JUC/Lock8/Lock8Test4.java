@@ -51,11 +51,11 @@ class Phone4{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("发短信");
+        System.out.println("发短信"+Thread.currentThread().getName());
     }
 
     public synchronized void call() {
-        System.out.println("打电话");
+        System.out.println("打电话"+Thread.currentThread().getName());
     }
 
 }

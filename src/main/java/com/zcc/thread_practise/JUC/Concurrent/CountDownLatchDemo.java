@@ -26,7 +26,12 @@ public class CountDownLatchDemo {
         //总数为3条线程
         CountDownLatch startSignle = new CountDownLatch(3);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             new Thread(() -> {
                 System.out.println(Thread.currentThread().getName()+ "---> Go out" );
                 startSignle.countDown();//数量 -1

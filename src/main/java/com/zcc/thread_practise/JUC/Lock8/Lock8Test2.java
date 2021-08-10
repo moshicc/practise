@@ -47,11 +47,11 @@ class Phone2{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("发短信");
+        System.out.println("发短信:" + Thread.currentThread().getName());
     }
 
     public synchronized void call() {
-        System.out.println("打电话");
+        System.out.println("打电话:" + Thread.currentThread().getName());
     }
     //没加synchronized ，这里没有锁！不是同步方法，不受锁的影响（）
     public void hello() {
