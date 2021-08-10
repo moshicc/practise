@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class BlockingQueueDemo {
     public static void main(String[] args) throws InterruptedException {
-        test4();
+        test3();
     }
 
     public static void test1() {
