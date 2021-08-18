@@ -1,5 +1,9 @@
 package com.zcc.reflect_practise;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author zcc
  * @ClassName Person
@@ -7,7 +11,9 @@ package com.zcc.reflect_practise;
  * @date 2021/5/18 17:04
  * @Version 1.0
  */
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
     private String name;

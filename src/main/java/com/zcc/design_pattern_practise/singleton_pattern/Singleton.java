@@ -18,13 +18,22 @@ package com.zcc.design_pattern_practise.singleton_pattern;
  */
 
 public class Singleton {
+    //添加volatile关键字是为了防止指令重排，在第29行instance = new Singleton()
     private static volatile Singleton instance;
+    //因为new Singleton() 实例化一个对象，将调用这个对象无参的构造方法（构造器），
+    //将这个构造方法设置为私有的，将无法通过new实例化
     private Singleton(){}
 
+    //提供一个静态的public对外访问，外部可以通过类名.方法名 通过返回值来获取唯一可用的对象
     public static Singleton getInstance() {
         if (instance == null) {
             synchronized (Singleton.class) {
                 if (instance == null) {
+                    //此句需要执行3步的
+                    //1.jvm开辟内存地址
+                    //2.new Singleton() 创建Singleton对象
+                    //3.将Singleton对象的引用地址，赋值给instance变量。(通常说把instance说成Singleton对象)
+                    //如果出现指令重排，1 3 2 那么instance将赋值个空对象
                     instance = new Singleton();
                 }
             }
