@@ -1,6 +1,12 @@
 package com.zcc.netty.test1.nettyServer;
 
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
@@ -47,6 +53,39 @@ public class EchoServer {
 
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workGroup = new NioEventLoopGroup();
+        try {
+            ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup,workGroup)
+                    .channel(NioServerSocketChannel.class)
+                    //.option(ChannelOption.SO_BACKLOG, 100)
+                    //.handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            ChannelPipeline p = socketChannel.pipeline();
+                            if (sslCtx != null) {
+                                p.addLast(sslCtx.newHandler(socketChannel.alloc()));
+                            }
+                            //TODO
+//                            p.addLast(new MessageDecoder());
+//                            p.addLast(new MessageEecoder());
+//                            p.addLast(new EchoServerHandler());
+                        }
+                    });
+
+            //start server
+            ChannelFuture f = b.bind(PORT).sync();
+            System.out.println("EchoServer.main ServerBootstrap配置启动完成");
+
+            //wait until the server socket is closed
+            f.channel().closeFuture().sync();
+            System.out.println("EchoServer.main end");
+        } catch (Exception e) {
+        // Shut down all event loops to terminate all threads.
+            bossGroup.shutdownGracefully();
+            workGroup.shutdownGracefully();
+
+        }
 
     }
 }
