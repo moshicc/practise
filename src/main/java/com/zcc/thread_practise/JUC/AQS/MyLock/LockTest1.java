@@ -18,8 +18,9 @@ public class LockTest1 {
         int count;
         public void getCount() {
             for (int i = 0; i < 100; i++) {
+                count = count + 1;
                 System.out.println(Thread.currentThread().getName() +"--->"+ count);
-                count++;
+
             }
         }
 
