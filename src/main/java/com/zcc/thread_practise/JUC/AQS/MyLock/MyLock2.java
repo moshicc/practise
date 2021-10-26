@@ -69,13 +69,13 @@ Found one Java-level deadlock:
 Java stack information for the threads listed above:
 ===================================================
 "线程2号":
-	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2.lambda$main$1(MyLock2.java:46)
+	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2.lambda$Main$1(MyLock2.java:46)
 	- waiting to lock <0x00000000d5ebb930> (a com.zcc.reflect_practise.Person)
 	- locked <0x00000000d5ebb948> (a com.zcc.reflect_practise.Person)
 	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2$$Lambda$2/931919113.run(Unknown Source)
 	at java.lang.Thread.run(Thread.java:748)
 "线程1号":
-	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2.lambda$main$0(MyLock2.java:29)
+	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2.lambda$Main$0(MyLock2.java:29)
 	- waiting to lock <0x00000000d5ebb948> (a com.zcc.reflect_practise.Person)
 	- locked <0x00000000d5ebb930> (a com.zcc.reflect_practise.Person)
 	at com.zcc.thread_practise.JUC.AQS.MyLock.MyLock2$$Lambda$1/1828972342.run(Unknown Source)

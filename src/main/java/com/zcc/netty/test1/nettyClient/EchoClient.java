@@ -30,7 +30,7 @@ public class EchoClient {
     static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
 
     public static void main(String[] args) throws Exception {
-        System.out.println("EchoClient.main");
+        System.out.println("EchoClient.Main");
         // Configure SSL.git
         final SslContext sslCtx;
         if (SSL) {
@@ -74,7 +74,7 @@ public class EchoClient {
 
             // Start the client.
             ChannelFuture f = b.connect(HOST, PORT).sync();
-            System.out.println("EchoClient.main ServerBootstrap配置启动完成");
+            System.out.println("EchoClient.Main ServerBootstrap配置启动完成");
 
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();

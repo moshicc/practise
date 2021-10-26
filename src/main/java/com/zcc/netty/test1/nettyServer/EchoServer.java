@@ -28,7 +28,7 @@ public class EchoServer {
     static final int PORT = Integer.parseInt(System.getProperty("port", "8007"));
 
     public static void main(String[] args) throws CertificateException, SSLException {
-        System.out.println("EchoServer.main start");
+        System.out.println("EchoServer.Main start");
 
         // Configure SSL.
         final SslContext sslCtx;
@@ -75,11 +75,11 @@ public class EchoServer {
 
             //start server
             ChannelFuture f = b.bind(PORT).sync();
-            System.out.println("EchoServer.main ServerBootstrap配置启动完成");
+            System.out.println("EchoServer.Main ServerBootstrap配置启动完成");
 
             //wait until the server socket is closed
             f.channel().closeFuture().sync();
-            System.out.println("EchoServer.main end");
+            System.out.println("EchoServer.Main end");
         } catch (Exception e) {
         // Shut down all event loops to terminate all threads.
             bossGroup.shutdownGracefully();

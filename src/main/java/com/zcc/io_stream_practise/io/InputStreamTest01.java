@@ -49,7 +49,7 @@ public class InputStreamTest01 {
             fis = new FileInputStream(srcPath);
             //缓冲区
             byte[] buf = new byte[8];
-            //每次读取8个字节
+            //每次读取8个字节, index 代表实际读取的字节数，比如最后一次buf可能读不满，就需要取buf中0到index这么长的数了。
             while ((index = fis.read(buf)) != -1) {
                 System.out.print(new String(buf,0,index));
             }
